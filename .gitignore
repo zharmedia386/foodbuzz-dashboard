@@ -6,11 +6,11 @@
 .pnp.js
 
 # main.py
-app.py
-backup.py
-get_data.py
-get_data2.py
-regex_test.py
+# app.py
+# backup.py
+# get_data.py
+# get_data2.py
+# regex_test.py
 
 # testing
 /coverage
