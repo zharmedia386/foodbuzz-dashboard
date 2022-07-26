@@ -292,20 +292,10 @@
                         </thead>
                         <tbody>
                           {% for person in users %}
+                          {% if not person['number'] == None %}
                           <tr>
                             <td>
-                              {% if person['number'] == 'zharmedia' %}
-                              <img src="{{url_for('static',filename='images/faces/face1.jpg')}}" class="me-2" alt="image"> {{person['number']}}
-                              {% endif %}
-                              {% if person['number'] == 'Reihan D4TI' %}
-                              <img src="{{url_for('static',filename='images/faces/face2.jpg')}}" class="me-2" alt="image"> {{person['number']}}
-                              {% endif %}
-                              {% if person['number'] == 'Khansa D4TI' %}
-                              <img src="{{url_for('static',filename='images/faces/face3.jpg')}}" class="me-2" alt="image"> {{person['number']}}
-                              {% endif %}
-                              {% if person['number'] == 'Salma D4TI' %}
-                              <img src="{{url_for('static',filename='images/faces/face4.jpg')}}" class="me-2" alt="image"> {{person['number']}}
-                              {% endif %}
+                              ◉ &nbsp;{{person['number']}}
                             </td>
                             <td> {{person['address']}}</td>
                             <td>
@@ -325,6 +315,7 @@
                             <td> {{person['noWhatsApp']}} </td>
                             <td> {{person['_id']}} </td>
                           </tr>
+                          {% endif %}
                           {% endfor %}
                         </tbody>
                       </table>
