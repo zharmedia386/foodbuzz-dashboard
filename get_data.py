@@ -8,13 +8,14 @@ cluster = MongoClient("mongodb+srv://zhar:zhar@cluster0.e99t7.mongodb.net/myFirs
 db = cluster["foodbuzz"]
 
 # Connect to the collection
-users = db["users"]
+db_users = db["users"]
 orders = db["orders"]
 items = db["items"]
+db_umkm_lists = db["umkm_lists"]
 
 def get_data() :
     # Count numbers of users
-    numbers_users = users.aggregate([{"$group": {"_id": None, "count": {"$sum": 1}}}])
+    numbers_users = db_users.aggregate([{"$group": {"_id": None, "count": {"$sum": 1}}}])
     # print("Number of users:", next(numbers_users)["count"])
     numbers_users = next(numbers_users)["count"]
 
@@ -29,7 +30,7 @@ def get_data() :
     numbers_items = next(numbers_items)["count"]
 
     # Count status of users
-    status_users = users.aggregate([{"$group": {"_id": "$status", "count": {"$sum": 1}}}])
+    status_users = db_users.aggregate([{"$group": {"_id": "$status", "count": {"$sum": 1}}}])
     # for status in status_users:
         # print(status["_id"], ":", status["count"])
     
@@ -50,11 +51,14 @@ def get_data() :
     # average_profit = next(average_profit)["total"]
 
     # Select Users
-    users_list = users.find()
+    users_list = db_users.find()
     # for person in users_list:
         # print(person['number'])
     image_users = ['images/faces/face1.jpg', 'images/faces/face2.jpg', 'images/faces/face3.jpg', 'images/faces/face4.jpg']
 
-    return numbers_users, numbers_orders, numbers_items, status_users, total_profit, item_ordered, users_list, image_users
+    # Select UMKM 
+    umkm_lists = db_umkm_lists.find()
+
+    return numbers_users, numbers_orders, numbers_items, status_users, total_profit, item_ordered, users_list, image_users, db_users, db_umkm_lists
 
 # test = get_data()
