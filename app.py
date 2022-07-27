@@ -10,7 +10,7 @@ numbers_users, numbers_orders, numbers_items, status_users, total_profit, item_o
 
 @app.route('/')
 def index():
-    return render_template('index.html', numbers_users=numbers_users, numbers_orders=numbers_orders, numbers_items=numbers_items, status_users=status_users, total_profit=total_profit, item_ordered=item_ordered, users=users_list, image_users=image_users)
+    return render_template('index.html', numbers_users=numbers_users, numbers_orders=numbers_orders, numbers_items=numbers_items, status_users=status_users, total_profit=total_profit, item_ordered=item_ordered, users=users_list, image_users=image_users, db_users=db_users)
 
 @app.route('/dashboard')
 def dashboard():
