@@ -8,6 +8,11 @@ app = Flask(__name__)
 # Get data from database
 numbers_users, numbers_orders, numbers_items, status_users, total_profit, item_ordered, users_list, image_users, db_users, db_umkm_lists = get_data()
 
+@app.route('/')
+def index():
+    numbers_users, numbers_orders, numbers_items, status_users, total_profit, item_ordered, users_list, image_users = get_data()
+    return render_template('index.html', numbers_users=numbers_users, numbers_orders=numbers_orders, numbers_items=numbers_items, status_users=status_users, total_profit=total_profit, item_ordered=item_ordered, users=users_list, image_users=image_users)
+
 @app.route('/dashboard')
 def dashboard():
     if 'username' in session:
